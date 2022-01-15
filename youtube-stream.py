@@ -1,0 +1,38 @@
+import os,time
+
+print('        предупреждение!!!\nданный код я писал для линукса по этому не факт что он работает на винде!!! а если у вас винда это вашей жопы дело :3')
+time.sleep(5)
+print('\n жди...')
+print('\n\n           °_°')
+time.sleep(3)
+print('\n\n ставим ffmpeg...')
+time.sleep(2)
+os.system('apt install ffmpeg -y')
+os.system('apt update -y')
+time.sleep(2)
+print('\n\n ставим youtube-dl')
+time.sleep(2)
+os.system('pip install youtube-dl')
+print('\n\n\n откуда брать видео?')
+type_stream = input('\n файл/ютуб: ')
+print('\n напоминаю что качество стрима зависит от скорости интернета') 
+time.sleep(3)
+
+if type_stream == 'ютуб':
+    link = input('\n\n ссылка на видос/стрим: ')
+    stream_key = input('\n ключ стрима: ')
+    time.sleep(2)
+    print('\n воруем стрим/видео...')
+    time.sleep(3)
+    print('\n начинаем стрим...')
+    os.system(f'ffmpeg -i $(youtube-dl -f best --get-url {link}) -f flv rtmp://a.rtmp.youtube.com/live2/{stream_key}')
+    print('\n\n трансляция закончена!')
+
+if type_stream == 'файл':
+    file_patch = input('путь к файлу: ')
+    stream_key = input('\n ключ стрима: ')
+    print('\n дай посмотрю :)')
+    time.sleep(3)
+    print('\n начинаем стрим...')
+    os.system(f'ffmpeg -i {file_patch} -f flv rtmp://a.rtmp.youtube.com/live2/{stream_key}')
+    print('трансляция закончена!')
